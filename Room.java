@@ -12,7 +12,6 @@ public class Room
     private Room southRoom;
     private Room westRoom;
     private Room eastRoom;
-    private Room mainRoom;
 
     //methods and constructors
     public Room (String description, boolean hasTreasure, boolean hasEnemy)
@@ -21,25 +20,31 @@ public class Room
         this.hasTreasure = hasTreasure;
         this.hasEnemy = hasEnemy;
     }
-    public void setNeighbors(Room n, Room s, Room e, Room w, Room main)
+    public void setNeighbors(Room n, Room s, Room e, Room w)
     {
-        northRoom = n;
-        southRoom = s;
-        eastRoom = e;
-        westRoom = w;
-        mainRoom = main;
+        //mutator method
+        northRoom= n;
+        southRoom= s;
+        westRoom= w;
+        eastRoom= e;
     }
     public void setEnemy(Enemy e)
     {
         //mutator method
+
     }
     public void search()
     {
         //put something in this
+        System.out.println("You have "+keys+" keys in your inventory");
     }
     public void enterRoom(Player p)
     {
         //something
+        if(p.getKeys()!= 0)
+        {
+            System.out.println("You have unlocked another room");
+        }
     }
     public String getDescription()
     {
@@ -48,14 +53,19 @@ public class Room
     public Room getNeighbor (String direction)
     {
         //some mutator method
+        if(direction.equals("West"))
+        {
+            
+        }
+        
     }
     public Enemy getEnemy()
     {
-        return e;
+        //accessor method
     }
     public boolean hasEnemy()
     {
-       // if ()
+        return hasEnemy;
     }
     
 }
