@@ -16,7 +16,9 @@ public class Room
     //methods and constructors
     public Room (String description, boolean hasTreasure, boolean hasEnemy)
     {
-        //constructor
+        this.description = description;
+        this.hasTreasure = hasTreasure;
+        this.hasEnemy = hasEnemy;
     }
     public void setNeighbors(Room n, Room s, Room e, Room w)
     {
@@ -36,7 +38,7 @@ public class Room
     }
     public String getDescription()
     {
-        //accessor method
+        return description;
     }
     public Room getNeighbor (String direction)
     {
@@ -50,6 +52,5 @@ public class Room
     {
         //boolean
     }
-
     
 }
