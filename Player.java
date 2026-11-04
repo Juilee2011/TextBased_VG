@@ -21,23 +21,26 @@ public class Player {
     //a method to check to see if the user has any keys
     public boolean hasKey() {
         if(numKeys != 0)
+        {
             return true;
+        }
         else
+        {
             return false;
+        }
     }
 
     public void takeDamage(int health){
-
+     health-=10;   
     }
 
     public void attack(Enemy e) {
         //accessor method from the enemy class
-        e.getHealth();
-        //call method to make the health of the enemy decrease
+        e.takeDamage(10);
     }
 
     public void changeRooms(Room r) {
-
+        this.currentRoom = r;
     }
 
     public int getKeys() {
@@ -48,8 +51,8 @@ public class Player {
         return health;
     }
 
-    public Room getRoom() {
-        
+    public Room getRoom(){
+         return this.currentRoom;
     }
 
 
