@@ -8,7 +8,7 @@ public class Game {
         Room southRoom = new Room("This is the final boss room.", true, true);
         Room westRoom = new Room("This is the Dinning hall.", true, false);
         Room eastRoom = new Room("This is the dining hall.", true, true);
-        Room northRoom = new Room("This is the ")
+        Room northRoom = new Room("This is the ");
      
     }
     public void gameLoop() {
