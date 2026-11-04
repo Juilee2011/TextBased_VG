@@ -55,7 +55,7 @@ public class Room
     }
     public boolean hasEnemy()
     {
-        if ()
+       // if ()
     }
     
 }
