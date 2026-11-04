@@ -12,6 +12,7 @@ public class Room
     private Room southRoom;
     private Room westRoom;
     private Room eastRoom;
+    private Room mainRoom;
 
     //methods and constructors
     public Room (String description, boolean hasTreasure, boolean hasEnemy)
@@ -20,9 +21,13 @@ public class Room
         this.hasTreasure = hasTreasure;
         this.hasEnemy = hasEnemy;
     }
-    public void setNeighbors(Room n, Room s, Room e, Room w)
+    public void setNeighbors(Room n, Room s, Room e, Room w, Room main)
     {
-        //mutator method
+        northRoom = n;
+        southRoom = s;
+        eastRoom = e;
+        westRoom = w;
+        mainRoom = main;
     }
     public void setEnemy(Enemy e)
     {
@@ -46,11 +51,11 @@ public class Room
     }
     public Enemy getEnemy()
     {
-        //accessor method
+        return e;
     }
     public boolean hasEnemy()
     {
-        //boolean
+        if ()
     }
     
 }
