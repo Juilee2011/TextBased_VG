@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Game {
 
-        Room mainLobby = new Room ("This is the main lobby.", true, false);
+        Room north= new "This is the main lobby.", true, false);
         Room duel = new Room("This is the final boss room.", true, true);
         Room diningHall = new Room("This is the Dinning hall.", true, false);
         Room library = new Room("This is the dining hall.", true, true);
@@ -22,7 +22,9 @@ public class Game {
        
         String nextRoom = input.nextLine();
         
-        if ()
+        if (nextRoom != null) {
+            player1.changeRooms(west);
+        }
     }
     public void gameLoop() {
         boolean gameOver = false;
