@@ -17,8 +17,6 @@ public class Room
     private String choice;
     private Enemy enemy;
 
-    Scanner scan= new Scanner(System.in);
-
     //methods and constructors
     public Room (String description, boolean hasTreasure, boolean hasEnemy)
     {
@@ -38,7 +36,7 @@ public class Room
     public void setEnemy(Enemy e)
     {
         //mutator method
-
+        //make sure to remove enemy after its dead
     }
     public void search()
     {
@@ -51,26 +49,6 @@ public class Room
         if(p.getKeys()!= 0)
         {
             System.out.println("You have unlocked another room");
-            keys--;
-            p.changeRooms(this);
-        }
-        else
-        {
-            System.out.println("This room is locked since you don't have enough keys.");
-            System.out.println("Solve this riddle to get a free key: Which month has 28 days?");
-            System.out.println("2 Options: \"February\" or \"None\" (of the above)");
-            String answer= scan.nextLine();
-            if(answer.equals("None"))
-            {
-                keys++;
-                System.out.println("Congrats, you have won a key! Now you can enter the room");
-                p.changeRooms(this);
-            }
-            else
-            {
-                System.out.println("Sorry, you unfortunately got the answer wrong");
-                System.out.println("Please go search around for a key again");
-            }
         }
     }
     public String getDescription()
