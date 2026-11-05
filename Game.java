@@ -17,19 +17,12 @@ public class Game {
     private String roomInfo;
     public void setUpGame(){
         System.out.println("Welcome to Vituoso!");
-        System.out.println("Your three directions that you can choose from are (south), west, and east: ");
+        System.out.println("The objective of this game is to get keys in order to unlock new doors, battle monsters, and, finally, beat the boss-level monster.");
+        System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are (south), west, and east: ");
        
-        roomInfo = input.nextLine();
+        String nextRoom = input.nextLine();
         
-        if (roomInfo.equals("south")) {
-            System.out.println("You need a key to enter this room.");
-        }
-        else if (roomInfo.equals("west")) {
-            player1.changeRooms(diningHall);
-        }
-        else {
-            player1.changeRooms(library);
-        }
+        if ()
     }
     public void gameLoop() {
         boolean gameOver = false;
@@ -42,15 +35,24 @@ public class Game {
                 String userChoice = input.nextLine();
                 if(userChoice.equalsIgnoreCase("Yes")) {
                     player1.attack(currentRoom.getEnemy());
+                    int randomNum = (int)(Math.random()*2) +1;
+                    int possibleDamage = (int)Math.random() * 10;
+
+                    if(randomNum == 1) {
+                        player1.takeDamage(possibleDamage);
+                    }
                     System.out.println("You have successfully attacked the enemy!");
                 }
                 else if (userChoice.equalsIgnoreCase("No")) {
-
+                    player1.takeDamage(100);
+                    System.out.println("You have choosen not to attack the enemy, so the enemy attacked you and you lost 10 health.");
                 }
             }
             else {
-                System.out.println("There is not enemy in this room");
+                System.out.println("There is not an enemy in this room");
             }
+
+            
 
 
 
