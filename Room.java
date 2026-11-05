@@ -7,7 +7,7 @@ public class Room
     private int keys;
     private boolean isSearched;
     private boolean hasTreasure;
-    private boolean isLocked;
+    private boolean isLocked= true;
     private boolean hasEnemy;
     private Room mainLobby;
     private Room iceCave;
@@ -81,16 +81,42 @@ public class Room
     {
         if(direction.equals("West"))
         {
-            System.out.println("You have entered the Dining Hall. There is a bowl, a plate, and a treasure chest.");
-            Scanner input = new Scanner(System.in);
-            System.out.println("One of these objects has the key to enter the Ice Cave. Which one would you like to start with?");
-            choice = input.nextLine();
+            // System.out.println("You have entered the Dining Hall. There is a bowl, a plate, and a treasure chest.");
+            // Scanner input = new Scanner(System.in);
+            // System.out.println("One of these objects has the key to enter the Ice Cave. Which one would you like to start with?");
+            // choice = input.nextLine();
 
-            if (choice.equalsIgnoreCase("Bowl"))
-            {
-                System.out.println("Congratulations! You found the key. Please type 'go inside' to get into the Ice Cave!");
+            // if (choice.equalsIgnoreCase("Bowl"))
+            // {
+            //     System.out.println("Congratulations! You found the key. Please type 'go inside' to get into the Ice Cave!");
                 
-            }
+            // }
+            return diningHall;
+        }
+        else if(direction.equals("East"))
+        {
+            return library;
+        }
+        else if(direction.equals("North"))
+        {
+            return mainLobby;
+        }
+        else if(direction.equals("South"))
+        {
+            return iceCave;
+        }
+        // else if(direction.equals("Duel"))
+        // {
+        //     return duelStadium;
+        // }
+        
+        // else 
+        // {
+        //     System.out.println("Your input is invalid. Please type in \"West\",\"East\",\"North\",\"South\",or \"Duel\" only please");
+        // }
+        else
+        {
+            return duelStadium;
         }
         
     }
