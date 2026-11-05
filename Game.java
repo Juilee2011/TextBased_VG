@@ -2,36 +2,58 @@ package TextBased_VG;
 import java.util.Scanner;
 
 public class Game {
+
+        Room mainLobby = new Room ("This is the main lobby.", true, false);
+        Room duel = new Room("This is the final boss room.", true, true);
+        Room diningHall = new Room("This is the Dinning hall.", true, false);
+        Room library = new Room("This is the dining hall.", true, true);
+        Room iceCave = new Room("This is the Ice Cave", true, false);
+        Player player1 = new Player(100, mainLobby, 0);
+        Enemy iceYeti = new Enemy(50, "This is an Ice Yeti");
+        Enemy fireMonster = new Enemy(50, "This is a Fire Monster");
+        Enemy goblin = new Enemy(100, "This is the final boss");
+
+        Scanner input = new Scanner(System.in);
     private String roomInfo;
     public void setUpGame(){
         System.out.println("Welcome to Vituoso!");
-        Room mainRoom = new Room ("This is the main lobby.", true, false);
-        Room southRoom = new Room("This is the final boss room.", true, true);
-        Room westRoom = new Room("This is the Dinning hall.", true, false);
-        Room eastRoom = new Room("This is the dining hall.", true, true);
-        Room northRoom = new Room("This is the Ice Cave", true, false);
-        Player player1 = new Player(100, mainRoom, 0);
-        
-        System.out.println("Your three directions that you can choose from are south, west, and east: ");
-        Scanner input = new Scanner(System.in);
+        System.out.println("Your three directions that you can choose from are (south), west, and east: ");
+       
         roomInfo = input.nextLine();
         
         if (roomInfo.equals("south")) {
-            
+            System.out.println("You need a key to enter this room.");
         }
         else if (roomInfo.equals("west")) {
-
+            player1.changeRooms(diningHall);
         }
         else {
-            
+            player1.changeRooms(library);
         }
-        
     }
     public void gameLoop() {
         boolean gameOver = false;
         while (!gameOver);
         {
-            
+            Room currentRoom = player1.getRoom();
+            if (currentRoom.hasEnemy()) {
+                System.out.println("There is an enemy in this room, be ready to fight!");
+                System.out.println("Do you want to attack? (Yes or no): ");
+                String userChoice = input.nextLine();
+                if(userChoice.equalsIgnoreCase("Yes")) {
+                    player1.attack(currentRoom.getEnemy());
+                    System.out.println("You have successfully attacked the enemy!");
+                }
+                else if (userChoice.equalsIgnoreCase("No")) {
+
+                }
+            }
+            else {
+                System.out.println("There is not enemy in this room");
+            }
+
+
+
         }
     }
 
