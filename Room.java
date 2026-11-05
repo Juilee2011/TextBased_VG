@@ -1,5 +1,5 @@
 package TextBased_VG;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Room 
 {
@@ -7,22 +7,22 @@ public class Room
     private int keys;
     private boolean isSearched;
     private boolean hasTreasure;
-    private boolean isLocked= true;
+    private boolean isLocked;
     private boolean hasEnemy;
     private Room mainLobby;
     private Room iceCave;
     private Room diningHall;
     private Room library;
     private Room duelStadium;
-    private String choice;
+    //private String choice;
     private Enemy enemy;
 
     //methods and constructors
     public Room (String description, boolean hasTreasure, boolean hasEnemy)
     {
-        this.description = description;
-        this.hasTreasure = hasTreasure;
-        this.hasEnemy = hasEnemy;
+        description= this.description;
+        hasTreasure= this.hasTreasure;
+        hasEnemy= this.hasEnemy;
     }
     public void setNeighbors(Room duel, Room s, Room e, Room w, Room main)
     {
@@ -49,6 +49,13 @@ public class Room
         if(p.getKeys()!= 0)
         {
             System.out.println("You have unlocked another room");
+            keys--;
+            isLocked= false;
+        }
+        else
+        {
+            System.out.println("Please check the other rooms for keys");
+            isLocked= true;
         }
     }
     public String getDescription()
@@ -92,9 +99,13 @@ public class Room
         // {
         //     System.out.println("Your input is invalid. Please type in \"West\",\"East\",\"North\",\"South\",or \"Duel\" only please");
         // }
+        // else
+        // {
+        //     return duelStadium;
+        // }
         else
         {
-            return duelStadium;
+            return null;
         }
         
     }
