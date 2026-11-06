@@ -2,7 +2,7 @@ package TextBased_VG;
 
 public class Player {
     private int health;
-    private Room currentRoom;
+    public Room currentRoom;
     private int numKeys = 0;
 
     //creates a player object which 

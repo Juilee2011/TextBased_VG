@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class Game {
 
-        Room north= new "This is the main lobby.", true, false);
-        Room duel = new Room("This is the final boss room.", true, true);
+        Room mainLobby = new Room("This is the main lobby.", true, false);
+        Room duelRoom = new Room("This is the final boss room.", true, true);
         Room diningHall = new Room("This is the Dinning hall.", true, false);
         Room library = new Room("This is the dining hall.", true, true);
         Room iceCave = new Room("This is the Ice Cave", true, false);
@@ -14,17 +14,18 @@ public class Game {
         Enemy goblin = new Enemy(100, "This is the final boss");
 
         Scanner input = new Scanner(System.in);
-    private String roomInfo;
+
     public void setUpGame(){
         System.out.println("Welcome to Vituoso!");
         System.out.println("The objective of this game is to get keys in order to unlock new doors, battle monsters, and, finally, beat the boss-level monster.");
         System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are (south), west, and east: ");
-       
         String nextRoom = input.nextLine();
-        
         if (nextRoom != null) {
-            player1.changeRooms(west);
+            if() {
+
+            }
         }
+        
     }
     public void gameLoop() {
         boolean gameOver = false;

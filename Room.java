@@ -34,8 +34,13 @@ public class Room
     }
     public void setEnemy(Enemy e)
     {
-        //mutator method
-        //make sure to remove enemy after its dead
+        this.enemy = e;
+        if (e != null) {
+            this.hasEnemy = true;
+        }
+        else {
+            this.hasEnemy = false;
+        }
     }
     public void search()
     {
@@ -44,7 +49,6 @@ public class Room
     }
     public void enterRoom(Player p)
     {
-        //something
         if(p.getKeys()!= 0)
         {
             System.out.println("You have unlocked another room");
@@ -56,7 +60,7 @@ public class Room
     }
     public Room getNeighbor(String direction)
     {
-        if(direction.equals("West"))
+        if(direction.equalsIgnoreCase("West"))
         {
             // System.out.println("You have entered the Dining Hall. There is a bowl, a plate, and a treasure chest.");
             // Scanner input = new Scanner(System.in);
@@ -70,15 +74,15 @@ public class Room
             // }
             return west;
         }
-        else if(direction.equals("East"))
+        else if(direction.equalsIgnoreCase("East"))
         {
             return east;
         }
-        else if(direction.equals("North"))
+        else if(direction.equalsIgnoreCase("North"))
         {
             return north;
         }
-        else if(direction.equals("South"))
+        else if(direction.equalsIgnoreCase("South"))
         {
             return south;
         }
@@ -87,10 +91,11 @@ public class Room
         //     return duelStadium;
         // }
         
-        // else 
-        // {
-        //     System.out.println("Your input is invalid. Please type in \"West\",\"East\",\"North\",\"South\",or \"Duel\" only please");
-        // }
+        else 
+        {
+            System.out.println("Your input is invalid. Please type in \"West\",\"East\",\"North\",\"South\",or \"Duel\" only please");
+            return null;
+        }
         
     }
     
