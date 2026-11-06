@@ -7,9 +7,9 @@ public class Player {
 
     //creates a player object which 
     public Player(int health, Room currentRoom, int numKeys) {
-        this.health = health;
-        this.currentRoom = currentRoom;
-        this.numKeys = numKeys;
+        health = this.health;
+        currentRoom = this.currentRoom;
+        numKeys = this.numKeys;
     }
 
     //method that changes the number of keys that the user has

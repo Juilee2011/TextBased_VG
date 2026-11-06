@@ -4,7 +4,9 @@ public class GameDriver
 {
     public static void main (String [] args)
     {
-        //call things from the Game class
+        Game virtuoso = new Game();
+        virtuoso.setUpGame();
+        virtuoso.gameLoop();
     }
     
 }
