@@ -1,5 +1,5 @@
 package TextBased_VG;
-import java.util.Scanner;
+
 
 public class Room 
 {
@@ -7,22 +7,21 @@ public class Room
     private int keys;
     private boolean isSearched;
     private boolean hasTreasure;
-    private boolean isLocked= true;
+    private boolean isLocked;
     private boolean hasEnemy;
     private Room north;
     private Room south;
     private Room west;
     private Room east;
-    private Room farSouth;
-    private String choice;
+    //private String choice;
     private Enemy enemy;
 
     //methods and constructors
     public Room (String description, boolean hasTreasure, boolean hasEnemy)
     {
-        this.description = description;
-        this.hasTreasure = hasTreasure;
-        this.hasEnemy = hasEnemy;
+        description= this.description;
+        hasTreasure= this.hasTreasure;
+        hasEnemy= this.hasEnemy;
     }
     public void setNeighbors(Room s, Room e, Room w, Room n)
     {
@@ -52,6 +51,13 @@ public class Room
         if(p.getKeys()!= 0)
         {
             System.out.println("You have unlocked another room");
+            keys--;
+            isLocked= false;
+        }
+        else
+        {
+            System.out.println("Sorry, you don't have enough keys to enter");
+            isLocked= true;
         }
     }
     public String getDescription()
@@ -62,16 +68,7 @@ public class Room
     {
         if(direction.equalsIgnoreCase("West"))
         {
-            // System.out.println("You have entered the Dining Hall. There is a bowl, a plate, and a treasure chest.");
-            // Scanner input = new Scanner(System.in);
-            // System.out.println("One of these objects has the key to enter the Ice Cave. Which one would you like to start with?");
-            // choice = input.nextLine();
-
-            // if (choice.equalsIgnoreCase("Bowl"))
-            // {
-            //     System.out.println("Congratulations! You found the key. Please type 'go inside' to get into the Ice Cave!");
-                
-            // }
+           
             return west;
         }
         else if(direction.equalsIgnoreCase("East"))
@@ -86,11 +83,7 @@ public class Room
         {
             return south;
         }
-        // else if(direction.equals("Duel"))
-        // {
-        //     return duelStadium;
-        // }
-        
+
         else 
         {
             System.out.println("Your input is invalid. Please type in \"West\",\"East\",\"North\",\"South\",or \"Duel\" only please");
