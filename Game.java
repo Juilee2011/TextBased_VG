@@ -21,9 +21,24 @@ public class Game {
         System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are (south), west, and east: ");
         String nextRoom = input.nextLine();
         if (nextRoom != null) {
-            if() {
-
+            if(nextRoom.equalsIgnoreCase("west")) {
+                player1.getRoom().getNeighbor("West");
             }
+            else if (nextRoom.equalsIgnoreCase("east")) {
+                player1.getRoom().getNeighbor("East");
+            }
+            else if (nextRoom.equalsIgnoreCase("south")) {
+                player1.getRoom().getNeighbor("South");
+            }
+            else if (nextRoom.equalsIgnoreCase("north")) {
+                player1.getRoom().getNeighbor("North");
+            }
+            else {
+                System.out.println("That direction is invalid.");
+            }
+        }
+        else {
+            System.out.println("You can not go that direction because there is no room");
         }
         
     }
@@ -38,7 +53,7 @@ public class Game {
                 String userChoice = input.nextLine();
                 if(userChoice.equalsIgnoreCase("Yes")) {
                     player1.attack(currentRoom.getEnemy());
-                    int randomNum = (int)(Math.random()*2) +1;
+                    int randomNum = (int)(Math.random()*2) + 1;
                     int possibleDamage = (int)Math.random() * 10;
 
                     if(randomNum == 1) {
