@@ -1,5 +1,5 @@
 package TextBased_VG;
-//import java.util.Scanner;
+import java.util.Scanner;
 
 public class Room 
 {
@@ -7,31 +7,30 @@ public class Room
     private int keys;
     private boolean isSearched;
     private boolean hasTreasure;
-    private boolean isLocked;
+    private boolean isLocked= true;
     private boolean hasEnemy;
-    private Room mainLobby;
-    private Room iceCave;
-    private Room diningHall;
-    private Room library;
-    private Room duelStadium;
-    //private String choice;
+    private Room north;
+    private Room south;
+    private Room west;
+    private Room east;
+    private Room farSouth;
+    private String choice;
     private Enemy enemy;
 
     //methods and constructors
     public Room (String description, boolean hasTreasure, boolean hasEnemy)
     {
-        description= this.description;
-        hasTreasure= this.hasTreasure;
-        hasEnemy= this.hasEnemy;
+        this.description = description;
+        this.hasTreasure = hasTreasure;
+        this.hasEnemy = hasEnemy;
     }
-    public void setNeighbors(Room duel, Room s, Room e, Room w, Room main)
+    public void setNeighbors(Room s, Room e, Room w, Room n)
     {
         //mutator method
-        mainLobby = main;
-        iceCave = s;
-        diningHall = w;
-        library = e;
-        duelStadium = duel;
+        north = n;
+        south = s;
+        west = w;
+        east = e;
     }
     public void setEnemy(Enemy e)
     {
@@ -49,20 +48,13 @@ public class Room
         if(p.getKeys()!= 0)
         {
             System.out.println("You have unlocked another room");
-            keys--;
-            isLocked= false;
-        }
-        else
-        {
-            System.out.println("Please check the other rooms for keys");
-            isLocked= true;
         }
     }
     public String getDescription()
     {
         return description;
     }
-    public Room getNeighbor (String direction)
+    public Room getNeighbor(String direction)
     {
         if(direction.equals("West"))
         {
@@ -76,19 +68,19 @@ public class Room
             //     System.out.println("Congratulations! You found the key. Please type 'go inside' to get into the Ice Cave!");
                 
             // }
-            return diningHall;
+            return west;
         }
         else if(direction.equals("East"))
         {
-            return library;
+            return east;
         }
         else if(direction.equals("North"))
         {
-            return mainLobby;
+            return north;
         }
         else if(direction.equals("South"))
         {
-            return iceCave;
+            return south;
         }
         // else if(direction.equals("Duel"))
         // {
@@ -99,16 +91,9 @@ public class Room
         // {
         //     System.out.println("Your input is invalid. Please type in \"West\",\"East\",\"North\",\"South\",or \"Duel\" only please");
         // }
-        // else
-        // {
-        //     return duelStadium;
-        // }
-        else
-        {
-            return null;
-        }
         
     }
+    
     public Enemy getEnemy()
     {
         //accessor method
