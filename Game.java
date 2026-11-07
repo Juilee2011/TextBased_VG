@@ -19,23 +19,26 @@ public class Game {
         System.out.println("Welcome to Vituoso!");
         System.out.println("The objective of this game is to get keys in order to unlock new doors, battle monsters, and, finally, beat the boss-level monster.");
         System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are (south), west, and east: ");
-        String nextRoom = input.nextLine();
+        String direction = input.nextLine();
+        Room nextRoom = player1.getRoom().getNeighbor(direction);
         if (nextRoom != null) {
-            if(nextRoom.equalsIgnoreCase("west")) {
-                player1.getRoom().getNeighbor("West");
-            }
-            else if (nextRoom.equalsIgnoreCase("east")) {
-                player1.getRoom().getNeighbor("East");
-            }
-            else if (nextRoom.equalsIgnoreCase("south")) {
-                player1.getRoom().getNeighbor("South");
-            }
-            else if (nextRoom.equalsIgnoreCase("north")) {
-                player1.getRoom().getNeighbor("North");
-            }
-            else {
-                System.out.println("That direction is invalid.");
-            }
+            player1.setRoom(nextRoom);
+            System.out.println(nextRoom.getDirection());
+            // if(nextRoom.equalsIgnoreCase("west")) {
+            //     player1.getRoom().getNeighbor("West");
+            // }
+            // else if (nextRoom.equalsIgnoreCase("east")) {
+            //     player1.getRoom().getNeighbor("East");
+            // }
+            // else if (nextRoom.equalsIgnoreCase("south")) {
+            //     player1.getRoom().getNeighbor("South");
+            // }
+            // else if (nextRoom.equalsIgnoreCase("north")) {
+            //     player1.getRoom().getNeighbor("North");
+            // }
+            // else {
+            //     System.out.println("That direction is invalid.");
+            // }
         }
         else {
             System.out.println("You can not go that direction because there is no room");
