@@ -19,9 +19,9 @@ public class Room
     //methods and constructors
     public Room (String description, boolean hasTreasure, boolean hasEnemy)
     {
-        description= this.description;
-        hasTreasure= this.hasTreasure;
-        hasEnemy= this.hasEnemy;
+        this.description = description;
+        this.hasTreasure = hasTreasure;
+        this.hasEnemy = hasEnemy;
     }
     public void setNeighbors(Room s, Room e, Room w, Room n)
     {
@@ -55,6 +55,7 @@ public class Room
             {
                 System.out.println("You found a key!");
                 keys++;
+                System.out.println("You now have " + keys + " keys.");
             }
             else
             {
@@ -65,21 +66,21 @@ public class Room
     }
     public void enterRoom(Player p)
     {
-        if(isLocked)
+        if(isLocked == true && isSearched == false)
         {
             if(p.getKeys()!= 0)
             {
                 System.out.println("You have unlocked another room");
-                isLocked=false;
+                isLocked = false;
                 keys--;
-                isSearched=true;
+                isSearched = true;
             
             }
             else
             {
                 System.out.println("Sorry, you don't have enough keys to enter");
-                isLocked= true;
-                isSearched=false;
+                isLocked = true;
+                isSearched = false;
             }
         }
         //maybe this is the search method?
