@@ -44,26 +44,48 @@ public class Room
     public void search()
     {
         //put something in this
-        if(hasTreasure)
+        if(isSearched==true)
         {
-            System.out.println("You found a piece of treasure!");
-            System.out.println("It's a key!");
-            keys++;
+            System.out.println("You have already searched this room");
+            
+        }
+        else
+        {
+            if(hasTreasure==true)
+            {
+                System.out.println("You found a key!");
+                keys++;
+            }
+            else
+            {
+                System.out.println("Sorry, there's no treasure");
+            }
         }
     
     }
     public void enterRoom(Player p)
     {
-        if(p.getKeys()!= 0)
+        if(isLocked)
         {
-            System.out.println("You have unlocked another room");
-            keys--;
-            isLocked= false;
+            if(p.getKeys()!= 0)
+            {
+                System.out.println("You have unlocked another room");
+                isLocked=false;
+                keys--;
+                isSearched=true;
+            
+            }
+            else
+            {
+                System.out.println("Sorry, you don't have enough keys to enter");
+                isLocked= true;
+                isSearched=false;
+            }
         }
+        //maybe this is the search method?
         else
         {
-            System.out.println("Sorry, you don't have enough keys to enter");
-            isLocked= true;
+            System.out.println("You have already searched this room. Please try another room");
         }
     }
     public String getDescription()
