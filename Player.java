@@ -7,9 +7,9 @@ public class Player {
 
     //creates a player object which 
     public Player(int health, Room currentRoom, int numKeys) {
-        health = this.health;
-        currentRoom = this.currentRoom;
-        numKeys = this.numKeys;
+        this.health = health;
+        this.currentRoom = currentRoom;
+        this.numKeys = numKeys;
     }
 
     //method that changes the number of keys that the user has
@@ -30,8 +30,8 @@ public class Player {
         }
     }
 
-    public void takeDamage(int health){
-     health-=10;   
+    public void takeDamage(int damage){
+     this.health -= damage;   
     }
 
     public void attack(Enemy e) {
