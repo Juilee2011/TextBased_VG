@@ -44,7 +44,13 @@ public class Room
     public void search()
     {
         //put something in this
-        System.out.println("You have "+ keys +" keys in your inventory");
+        if(hasTreasure)
+        {
+            System.out.println("You found a piece of treasure!");
+            System.out.println("It's a key!");
+            keys++;
+        }
+    
     }
     public void enterRoom(Player p)
     {
