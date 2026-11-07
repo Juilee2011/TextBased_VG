@@ -89,7 +89,7 @@ public class Game {
                 System.out.println("There is not an enemy in this room");
             }
 
-            if(player1.getHealth<=0)
+            if(player1.getHealth()<=0)
             {
                 gameOver = true;
             }
