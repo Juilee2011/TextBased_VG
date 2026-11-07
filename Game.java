@@ -64,6 +64,8 @@ public class Game {
         while (!gameOver);
         {
             Room currentRoom = player1.getRoom();
+            System.out.println(currentRoom.getDescription());
+    
             if (currentRoom.hasEnemy()) {
                 System.out.println("There is an enemy in this room, be ready to fight!");
                 System.out.println("Do you want to attack? (Yes or no): ");
@@ -87,8 +89,13 @@ public class Game {
                 System.out.println("There is not an enemy in this room");
             }
 
-            
-
+            if(player1.getHealth<=0)
+            {
+                gameOver = true;
+            }
+            else{
+                gameOver = false;
+            }
 
 
         }
