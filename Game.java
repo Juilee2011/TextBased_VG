@@ -49,7 +49,7 @@ public class Game {
         mainLobby.setNeighbors(iceCave, library, diningHall, null);
         diningHall.setNeighbors(null, mainLobby, null, null);
         iceCave.setNeighbors(duelRoom, null, null, mainLobby);
-        duelRoom.setNeight(null, null, null, iceCave);
+        duelRoom.setNeighbors(null, null, null, iceCave);
 
 
         mainLobby.setEnemy(null);
