@@ -7,7 +7,7 @@ public class Game {
         Room duelRoom = new Room("This is the final boss room.", true, true);
         Room diningHall = new Room("This is the Dinning hall.", true, false);
         Room library = new Room("This is the dining hall.", true, true);
-        Room iceCave = new Room("This is the Ice Cave", true, false);
+        Room iceCave = new Room("This is the Ice Cave", true, true);
         Player player1 = new Player(100, mainLobby, 0);
         Enemy iceYeti = new Enemy(50, "This is an Ice Yeti");
         Enemy fireMonster = new Enemy(50, "This is a Fire Monster");
@@ -45,6 +45,18 @@ public class Game {
         else {
             System.out.println("You can not go that direction because there is no room");
         }
+        library.setNeighbors(null, null, mainLobby, null);
+        mainLobby.setNeighbors(iceCave, library, diningHall, null);
+        diningHall.setNeighbors(null, mainLobby, null, null);
+        iceCave.setNeighbors(duelRoom, null, null, mainLobby);
+        duelRoom.setNeight(null, null, null, iceCave);
+
+
+        mainLobby.setEnemy(null);
+        diningHall.setEnemy(iceYeti);
+        iceCave.setEnemy(fireMonster);
+        duelRoom.setEnemy(goblin);
+        library.setEnemy(null);
         
     }
     public void gameLoop() {
@@ -67,7 +79,7 @@ public class Game {
                     System.out.println("You have successfully attacked the enemy!");
                 }
                 else if (userChoice.equalsIgnoreCase("No")) {
-                    player1.takeDamage(100);
+                    player1.takeDamage(10);
                     System.out.println("You have choosen not to attack the enemy, so the enemy attacked you and you lost 10 health.");
                 }
             }
