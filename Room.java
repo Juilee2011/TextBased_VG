@@ -22,6 +22,9 @@ public class Room
         this.description = description;
         this.hasTreasure = hasTreasure;
         this.hasEnemy = hasEnemy;
+        this.isSearched = false;
+        this.isLocked = false;
+        this.keys = 1;
     }
     public void setNeighbors(Room s, Room e, Room w, Room n)
     {
@@ -41,21 +44,21 @@ public class Room
             this.hasEnemy = false;
         }
     }
-    public void search()
+    public void search(Player p)
     {
         //put something in this
         if(isSearched==true)
         {
             System.out.println("You have already searched this room");
-            
         }
         else
         {
+            isSearched = true;
             if(hasTreasure==true)
             {
                 System.out.println("You found a key!");
-                keys++;
-                System.out.println("You now have " + keys + " keys.");
+                p.addKey(1);
+                System.out.println("You now have " + p.getKeys() + " keys.");
             }
             else
             {
@@ -68,7 +71,7 @@ public class Room
     {
         if(isLocked == true && isSearched == false)
         {
-            if(p.getKeys()!= 0)
+            if(p.getKeys()> 0)
             {
                 System.out.println("You have unlocked another room");
                 isLocked = false;

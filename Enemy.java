@@ -7,8 +7,8 @@ public class Enemy
 
     public Enemy(int health, String description)
     {
-        health= this.health;
-        description= this.description;
+        this.health = health;
+        this.description = description;
     }
 
     public boolean isAlive()
@@ -23,16 +23,22 @@ public class Enemy
 
     public void takeDamage(int damage)
     {
-        health= health-damage;
+        this.health -= damage;
+        if (this.health < 0) {
+            this.health = 0;
+        }
     }
 
     public void attack(Player p)
     {
-        System.out.println("You are being attacked! You have lost 10 health");
+        int damage = 10;
+        p.takeDamage(damage);
+        System.out.println("You are being attacked! You have lost " + damage + " health");
     }
 
     public String getDescription()
     {
         return description;
     }
+     
 }

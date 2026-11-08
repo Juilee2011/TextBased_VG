@@ -8,6 +8,7 @@ public class Game {
         Room diningHall = new Room("This is the Dinning hall.", true, false);
         Room library = new Room("This is the dining hall.", true, true);
         Room iceCave = new Room("This is the Ice Cave", true, true);
+        
         Player player1 = new Player(100, mainLobby, 0);
         Enemy iceYeti = new Enemy(50, "This is an Ice Yeti");
         Enemy fireMonster = new Enemy(50, "This is a Fire Monster");
@@ -16,6 +17,19 @@ public class Game {
         Scanner input = new Scanner(System.in);
 
     public void setUpGame(){
+
+        library.setNeighbors(null, null, mainLobby, null);
+        mainLobby.setNeighbors(iceCave, library, diningHall, null);
+        diningHall.setNeighbors(null, mainLobby, null, null);
+        iceCave.setNeighbors(duelRoom, null, null, mainLobby);
+        duelRoom.setNeighbors(null, null, null, iceCave);
+
+        mainLobby.setEnemy(null);
+        diningHall.setEnemy(iceYeti);
+        iceCave.setEnemy(fireMonster);
+        duelRoom.setEnemy(goblin);
+        library.setEnemy(null);
+
         System.out.println("Welcome to Vituoso!");
         System.out.println("The objective of this game is to get keys in order to unlock new doors, battle monsters, and, finally, beat the boss-level monster.");
         System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are (south), west, and east: ");
@@ -45,35 +59,26 @@ public class Game {
         else {
             System.out.println("You can not go that direction because there is no room");
         }
-        library.setNeighbors(null, null, mainLobby, null);
-        mainLobby.setNeighbors(iceCave, library, diningHall, null);
-        diningHall.setNeighbors(null, mainLobby, null, null);
-        iceCave.setNeighbors(duelRoom, null, null, mainLobby);
-        duelRoom.setNeighbors(null, null, null, iceCave);
-
-
-        mainLobby.setEnemy(null);
-        diningHall.setEnemy(iceYeti);
-        iceCave.setEnemy(fireMonster);
-        duelRoom.setEnemy(goblin);
-        library.setEnemy(null);
+        
         
     }
     public void gameLoop() {
         boolean gameOver = false;
-        while (!gameOver);
+        while (!gameOver)
         {
             Room currentRoom = player1.getRoom();
-            System.out.println(currentRoom.getDescription());
+            System.out.println("Location: " + currentRoom.getDescription());
     
             if (currentRoom.hasEnemy()) {
                 System.out.println("There is an enemy in this room, be ready to fight!");
                 System.out.println("Do you want to attack? (Yes or no): ");
                 String userChoice = input.nextLine();
+
                 if(userChoice.equalsIgnoreCase("Yes")) {
                     player1.attack(currentRoom.getEnemy());
+
                     int randomNum = (int)(Math.random()*2) + 1;
-                    int possibleDamage = (int)Math.random() * 10;
+                    int possibleDamage = (int)(Math.random() * 10) + 1;
 
                     if(randomNum == 1) {
                         player1.takeDamage(possibleDamage);
@@ -91,14 +96,28 @@ public class Game {
 
             if(player1.getHealth()<=0)
             {
+                System.out.println("GAME OVER! You ran out of health");
                 gameOver = true;
             }
-            else{
-                gameOver = false;
+            else if(!goblin.isAlive())
+            {
+                System.out.println("Congratulations! You finished the game and defeated the final boss!");
+                gameOver = true;
             }
+            else {
+                System.out.println("Choose next direction (north, south, east, west): ");
+                String direction = input.nextLine();
+                Room nextRoom = player1.getRoom().getNeighbor(direction);
 
-
+                if(nextRoom != null) {
+                    player1.changeRooms(nextRoom);
+                }
+                else {
+                    System.out.println("There is no room to go into so you will stay in the same room");
+                }
+            }
         }
+        System.out.println("Thank you for playing!");
     }
 
 }

@@ -15,7 +15,6 @@ public class Player {
     //method that changes the number of keys that the user has
     public void addKeys(int keys) {
         numKeys++;
-        numKeys = keys;
     }
     
     //a method to check to see if the user has any keys
@@ -31,7 +30,10 @@ public class Player {
     }
 
     public void takeDamage(int damage){
-     this.health -= damage;   
+     this.health -= damage;
+     if (this.health < 0) {
+        this.health = 0;
+     }   
     }
 
     public void attack(Enemy e) {
