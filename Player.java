@@ -40,7 +40,8 @@ public class Player
 
     public void attack(Enemy e) {
         //accessor method from the enemy class
-        e.takeDamage(10);
+      
+        e.takeDamage(50);
     }
 
     public void changeRooms(Room r) {

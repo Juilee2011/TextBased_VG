@@ -12,15 +12,13 @@ public class Enemy
         this.health = health;
         this.description = description;
     }
-    //method to check how many health the player has (in other words, to check if they are alive)
-    public boolean isAlive()
+    
+    
+    public void attack(Player p)
     {
-        if(health>0)
-        {
-            return true;
-        }
-        else
-        return false;
+        int damage = 10;
+        p.takeDamage(damage);
+        System.out.println("You are being attacked! You have lost " + damage + " health");
     }
     //removes health if the player decides not to fight the yeti
     public void takeDamage(int damage)
@@ -31,12 +29,18 @@ public class Enemy
         }
     }
     //this is the method that happens while the player fights
-    public void attack(Player p)
+    
+    //method to check how many health the player has (in other words, to check if they are alive)
+    public boolean isAlive()
     {
-        int damage = 10;
-        p.takeDamage(damage);
-        System.out.println("You are being attacked! You have lost " + damage + " health");
+        if(health>0)
+        {
+            return true;
+        }
+        else
+        return false;
     }
+    
     //returns the description of the class
     public String getDescription()
     {
