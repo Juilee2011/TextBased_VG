@@ -88,9 +88,10 @@ public class Game {
                 System.out.println("There is an enemy in this room, be ready to fight!");
                 System.out.println("What you are facing "+currentEnemy.getDescription());
                 System.out.println("Do you want to attack? (yes or no): ");
-                userChoice = input.nextLine();
+                //userChoice = input.nextLine();
                 while(currentEnemy.isAlive())
                 {
+                    userChoice= input.nextLine();
                     if(userChoice.equalsIgnoreCase("Yes")) {
                     player1.attack(currentRoom.getEnemy());
 
