@@ -38,7 +38,17 @@ public class Game {
 
         System.out.println("Welcome to Vituoso!");
         System.out.println("The objective of this game is to get keys in order to unlock new doors, battle monsters, and, finally, beat the boss-level monster.");
-       // System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are south, west, and east: ");
+        System.out.println("You have a map in your inventory, do you want to use it? (yes or no): ");
+            String mapChoice = input.nextLine();
+                if (mapChoice.equals("yes")) {
+                    System.out.println("_______________________________________________________________________");
+                    System.out.println("MAP OF GAME:");
+                    System.out.println("Main Lobby connects the Dining Room (west), the Ice Cave (south), and the Library (east).\nDining Room only has access to the Main Lobby (east). \nLibrary also only has access to the Main Lobby (west). \nThe Ice Cave connects the Main Lobby (north) and the Duel Stadium (south).\nThe Duel Stadium only can access to the Ice Cave (north).");
+                    System.out.println("_______________________________________________________________________");
+                }
+            
+                
+        // System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are south, west, and east: ");
         
         //direction = input.nextLine();
         //Room nextRoom = player1.getRoom().getNeighbor(direction);
@@ -55,6 +65,7 @@ public class Game {
             //if(direction.equalsIgnoreCase("west")||direction.equalsIgnoreCase("east")|| direction.equalsIgnoreCase("south")||direction.equalsIgnoreCase("north"))
             //{
                 //IDK WHAT'S HAPPENING HERE, I JS MOVED RANDOM STUFF AHOEHOIFEJFEOEJO
+                
                 currentRoom = player1.getRoom();
                 System.out.println("Current Location: " + currentRoom.getDescription());
                 System.out.println("Choose your next room (north, south, east, west): ");
