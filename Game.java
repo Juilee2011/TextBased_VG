@@ -18,7 +18,7 @@ public class Game {
         String direction = "";
         Room nextRoom;
         Room currentRoom;
-        String userChoice;
+        String userChoice = "";
         Enemy currentEnemy;
         
 
@@ -38,33 +38,12 @@ public class Game {
 
         System.out.println("Welcome to Vituoso!");
         System.out.println("The objective of this game is to get keys in order to unlock new doors, battle monsters, and, finally, beat the boss-level monster.");
-        System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are south, west, and east: ");
+       // System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are south, west, and east: ");
         
-        direction = input.nextLine();
+        //direction = input.nextLine();
         //Room nextRoom = player1.getRoom().getNeighbor(direction);
 
-        // if (nextRoom != null) {
-        //     player1.changeRooms(nextRoom);
-        //     System.out.println(nextRoom.getDescription());
-        //     // if(nextRoom.equalsIgnoreCase("west")) {
-        //     //     player1.getRoom().getNeighbor("West");
-        //     // }
-        //     // else if (nextRoom.equalsIgnoreCase("east")) {
-        //     //     player1.getRoom().getNeighbor("East");
-        //     // }
-        //     // else if (nextRoom.equalsIgnoreCase("south")) {
-        //     //     player1.getRoom().getNeighbor("South");
-        //     // }
-        //     // else if (nextRoom.equalsIgnoreCase("north")) {
-        //     //     player1.getRoom().getNeighbor("North");
-        //     // }
-        //     // else {
-        //     //     System.out.println("That direction is invalid.");
-        //     // }
-        // }
-        // else {
-        //     System.out.println("You can not go that direction because there is no room");
-        // }
+        
         
         
     }
@@ -72,47 +51,45 @@ public class Game {
         boolean gameOver = false;
         while (!gameOver)
         {
-            if(direction.equalsIgnoreCase("west")||direction.equalsIgnoreCase("east")|| direction.equalsIgnoreCase("south")||direction.equalsIgnoreCase("south"))
-            {
+
+            //if(direction.equalsIgnoreCase("west")||direction.equalsIgnoreCase("east")|| direction.equalsIgnoreCase("south")||direction.equalsIgnoreCase("north"))
+            //{
                 //IDK WHAT'S HAPPENING HERE, I JS MOVED RANDOM STUFF AHOEHOIFEJFEOEJO
                 currentRoom = player1.getRoom();
-                System.out.println("Location: " + currentRoom.getDescription());
+                System.out.println("Current Location: " + currentRoom.getDescription());
+                System.out.println("Choose your next room (north, south, east, west): ");
 
+                 direction= input.nextLine();
+            
+            if(direction.equalsIgnoreCase("quit"))
+            {
+                //WE NEED TO CREDIT THIS LATER
+                gameOver=true;
+                break;
+                //System.exit(0);
+            }
+            
+                //direction = input.nextLine();
                 nextRoom = currentRoom.getNeighbor(direction);
-
-                System.out.println("Choose next direction (north, south, east, west): ");
-                direction = input.nextLine();
-                nextRoom = player1.getRoom().getNeighbor(direction);
+                
 
                 if(nextRoom != null) {
                     player1.changeRooms(nextRoom);
+                    currentRoom= player1.getRoom();
                 }
                 else {
                     System.out.println("There is no room to go into so you will stay in the same room");
+                    continue;
                 }
-            }
-            else
-            {
-                System.out.println("Your input is invalid; please type in north, south, east or west, or quit to quit");
-                direction= input.nextLine();
-            }
-
-            if (nextRoom != null) {
-                player1.changeRooms(nextRoom);
-                System.out.println(nextRoom.getDescription());
+            
     
-            }
-            else {
-            System.out.println("You can not go that direction because there is no room");
-            }
-    
-            if (currentRoom.hasEnemy()) {
+            if (currentRoom.hasEnemy() && currentRoom.getEnemy().isAlive()) {
                 currentEnemy= currentRoom.getEnemy();
                 System.out.println("There is an enemy in this room, be ready to fight!");
                 System.out.println("What you are facing "+currentEnemy.getDescription());
                 System.out.println("Do you want to attack? (yes or no): ");
                 userChoice = input.nextLine();
-                for(var a=0; a<1;)
+                while(currentEnemy.isAlive())
                 {
                     if(userChoice.equalsIgnoreCase("Yes")) {
                     player1.attack(currentRoom.getEnemy());
@@ -129,7 +106,11 @@ public class Game {
                     else if (userChoice.equalsIgnoreCase("No")) {
                     player1.takeDamage(10);
                     System.out.println("You have choosen not to attack the enemy, so the enemy attacked you and you lost 10 health.");
-                    a++;
+                    
+                    }
+                    else if(userChoice.equalsIgnoreCase("quit"))
+                    {
+                        break;
                     }
                     else
                     {
@@ -137,13 +118,13 @@ public class Game {
                         userChoice= input.nextLine();
                     }
                     
-                    if(!currentEnemy.isAlive())
-                    {
-                       System.out.println("You have defeated the enemy! Congrats!");
-                       System.out.println("You have won another key!");
-                       player1.addKeys(1);
-                       System.out.println("You now have "+player1.getKeys()+" keys");
-                    }
+                   
+                    //    System.out.println("You have defeated the enemy! Congrats!");
+                    //    System.out.println("You have won another key!");
+                    //    player1.addKeys(1);
+                    //    System.out.println("You now have "+player1.getKeys()+" keys");
+                       
+                    
                 
                 }
             }
