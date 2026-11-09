@@ -15,6 +15,8 @@ public class Game {
         Enemy goblin = new Enemy(100, "This is the final boss");
 
         Scanner input = new Scanner(System.in);
+        String direction;
+        Room nextRoom;
 
     public void setUpGame(){
 
@@ -25,40 +27,40 @@ public class Game {
         duelRoom.setNeighbors(null, null, null, iceCave);
 
         mainLobby.setEnemy(null);
-        diningHall.setEnemy(iceYeti);
-        iceCave.setEnemy(fireMonster);
+        diningHall.setEnemy(null);
+        iceCave.setEnemy(iceYeti);
         duelRoom.setEnemy(goblin);
-        library.setEnemy(null);
+        library.setEnemy(fireMonster);
 
         System.out.println("Welcome to Vituoso!");
         System.out.println("The objective of this game is to get keys in order to unlock new doors, battle monsters, and, finally, beat the boss-level monster.");
-        System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are (south), west, and east: ");
+        System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are south, west, and east: ");
         
-        String direction = input.nextLine();
-        Room nextRoom = player1.getRoom().getNeighbor(direction);
+        direction = input.nextLine();
+        //Room nextRoom = player1.getRoom().getNeighbor(direction);
 
-        if (nextRoom != null) {
-            player1.changeRooms(nextRoom);
-            System.out.println(nextRoom.getDescription());
-            // if(nextRoom.equalsIgnoreCase("west")) {
-            //     player1.getRoom().getNeighbor("West");
-            // }
-            // else if (nextRoom.equalsIgnoreCase("east")) {
-            //     player1.getRoom().getNeighbor("East");
-            // }
-            // else if (nextRoom.equalsIgnoreCase("south")) {
-            //     player1.getRoom().getNeighbor("South");
-            // }
-            // else if (nextRoom.equalsIgnoreCase("north")) {
-            //     player1.getRoom().getNeighbor("North");
-            // }
-            // else {
-            //     System.out.println("That direction is invalid.");
-            // }
-        }
-        else {
-            System.out.println("You can not go that direction because there is no room");
-        }
+        // if (nextRoom != null) {
+        //     player1.changeRooms(nextRoom);
+        //     System.out.println(nextRoom.getDescription());
+        //     // if(nextRoom.equalsIgnoreCase("west")) {
+        //     //     player1.getRoom().getNeighbor("West");
+        //     // }
+        //     // else if (nextRoom.equalsIgnoreCase("east")) {
+        //     //     player1.getRoom().getNeighbor("East");
+        //     // }
+        //     // else if (nextRoom.equalsIgnoreCase("south")) {
+        //     //     player1.getRoom().getNeighbor("South");
+        //     // }
+        //     // else if (nextRoom.equalsIgnoreCase("north")) {
+        //     //     player1.getRoom().getNeighbor("North");
+        //     // }
+        //     // else {
+        //     //     System.out.println("That direction is invalid.");
+        //     // }
+        // }
+        // else {
+        //     System.out.println("You can not go that direction because there is no room");
+        // }
         
         
     }
@@ -68,6 +70,18 @@ public class Game {
         {
             Room currentRoom = player1.getRoom();
             System.out.println("Location: " + currentRoom.getDescription());
+
+            nextRoom = player1.getRoom().getNeighbor(direction);
+
+            if (nextRoom != null) {
+            player1.changeRooms(nextRoom);
+            System.out.println(nextRoom.getDescription());
+
+    
+        }
+        else {
+            System.out.println("You can not go that direction because there is no room");
+        }
     
             if (currentRoom.hasEnemy()) {
                 System.out.println("There is an enemy in this room, be ready to fight!");
