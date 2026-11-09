@@ -57,7 +57,7 @@ public class Room
             if(hasTreasure==true)
             {
                 System.out.println("You found a key!");
-                p.addKey(1);
+                p.addKeys(1);
                 System.out.println("You now have " + p.getKeys() + " keys.");
             }
             else
@@ -77,6 +77,7 @@ public class Room
                 isLocked = false;
                 keys--;
                 isSearched = true;
+                System.out.println("You now have "+keys+" keys");
             
             }
             else
