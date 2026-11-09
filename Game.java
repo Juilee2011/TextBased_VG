@@ -10,16 +10,20 @@ public class Game {
         Room iceCave = new Room("This is the Ice Cave", true, true);
         
         Player player1 = new Player(100, mainLobby, 0);
-        Enemy iceYeti = new Enemy(50, "This is an Ice Yeti");
-        Enemy fireMonster = new Enemy(50, "This is a Fire Monster");
-        Enemy goblin = new Enemy(100, "This is the final boss");
+        Enemy iceYeti = new Enemy(50, "is an Ice Yeti");
+        Enemy fireMonster = new Enemy(50, "is a Fire Monster");
+        Enemy goblin = new Enemy(100, "is the final boss");
 
         Scanner input = new Scanner(System.in);
-        String direction;
+        String direction = "";
         Room nextRoom;
+        Room currentRoom;
+        String userChoice;
+        Enemy currentEnemy;
+        
 
     public void setUpGame(){
-
+        //directions: south, east, west, north
         library.setNeighbors(null, null, mainLobby, null);
         mainLobby.setNeighbors(iceCave, library, diningHall, null);
         diningHall.setNeighbors(null, mainLobby, null, null);
@@ -68,40 +72,79 @@ public class Game {
         boolean gameOver = false;
         while (!gameOver)
         {
-            Room currentRoom = player1.getRoom();
-            System.out.println("Location: " + currentRoom.getDescription());
+            if(direction.equalsIgnoreCase("west")||direction.equalsIgnoreCase("east")|| direction.equalsIgnoreCase("south")||direction.equalsIgnoreCase("south"))
+            {
+                //IDK WHAT'S HAPPENING HERE, I JS MOVED RANDOM STUFF AHOEHOIFEJFEOEJO
+                currentRoom = player1.getRoom();
+                System.out.println("Location: " + currentRoom.getDescription());
 
-            nextRoom = player1.getRoom().getNeighbor(direction);
+                nextRoom = currentRoom.getNeighbor(direction);
+
+                System.out.println("Choose next direction (north, south, east, west): ");
+                direction = input.nextLine();
+                nextRoom = player1.getRoom().getNeighbor(direction);
+
+                if(nextRoom != null) {
+                    player1.changeRooms(nextRoom);
+                }
+                else {
+                    System.out.println("There is no room to go into so you will stay in the same room");
+                }
+            }
+            else
+            {
+                System.out.println("Your input is invalid; please type in north, south, east or west, or quit to quit");
+                direction= input.nextLine();
+            }
 
             if (nextRoom != null) {
-            player1.changeRooms(nextRoom);
-            System.out.println(nextRoom.getDescription());
-
+                player1.changeRooms(nextRoom);
+                System.out.println(nextRoom.getDescription());
     
-        }
-        else {
+            }
+            else {
             System.out.println("You can not go that direction because there is no room");
-        }
+            }
     
             if (currentRoom.hasEnemy()) {
+                currentEnemy= currentRoom.getEnemy();
                 System.out.println("There is an enemy in this room, be ready to fight!");
-                System.out.println("Do you want to attack? (Yes or no): ");
-                String userChoice = input.nextLine();
-
-                if(userChoice.equalsIgnoreCase("Yes")) {
+                System.out.println("What you are facing "+currentEnemy.getDescription());
+                System.out.println("Do you want to attack? (yes or no): ");
+                userChoice = input.nextLine();
+                for(var a=0; a<1;)
+                {
+                    if(userChoice.equalsIgnoreCase("Yes")) {
                     player1.attack(currentRoom.getEnemy());
 
-                    int randomNum = (int)(Math.random()*2) + 1;
+                    int randomNum = (int)(Math.random()*2) + 0;
                     int possibleDamage = (int)(Math.random() * 10) + 1;
 
                     if(randomNum == 1) {
                         player1.takeDamage(possibleDamage);
                     }
                     System.out.println("You have successfully attacked the enemy!");
-                }
-                else if (userChoice.equalsIgnoreCase("No")) {
+                    System.out.println("You have recieved "+possibleDamage+" damage.");
+                    }
+                    else if (userChoice.equalsIgnoreCase("No")) {
                     player1.takeDamage(10);
                     System.out.println("You have choosen not to attack the enemy, so the enemy attacked you and you lost 10 health.");
+                    a++;
+                    }
+                    else
+                    {
+                        System.out.println("Sorry, but your input was invalid. Please type in yes or no.");
+                        userChoice= input.nextLine();
+                    }
+                    
+                    if(!currentEnemy.isAlive())
+                    {
+                       System.out.println("You have defeated the enemy! Congrats!");
+                       System.out.println("You have won another key!");
+                       player1.addKeys(1);
+                       System.out.println("You now have "+player1.getKeys()+" keys");
+                    }
+                
                 }
             }
             else {
@@ -118,18 +161,12 @@ public class Game {
                 System.out.println("Congratulations! You finished the game and defeated the final boss!");
                 gameOver = true;
             }
-            else {
-                System.out.println("Choose next direction (north, south, east, west): ");
-                String direction = input.nextLine();
-                Room nextRoom = player1.getRoom().getNeighbor(direction);
 
-                if(nextRoom != null) {
-                    player1.changeRooms(nextRoom);
-                }
-                else {
-                    System.out.println("There is no room to go into so you will stay in the same room");
-                }
+            if(userChoice.equals("quit") || direction.equals("quit"))
+            {
+                gameOver=true;
             }
+            
         }
         System.out.println("Thank you for playing!");
     }
