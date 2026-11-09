@@ -38,14 +38,26 @@ public class Game {
 
         System.out.println("Welcome to Vituoso!");
         System.out.println("The objective of this game is to get keys in order to unlock new doors, battle monsters, and, finally, beat the boss-level monster.");
-        System.out.println("You have a map in your inventory, do you want to use it? (yes or no): ");
-            String mapChoice = input.nextLine();
-                if (mapChoice.equals("yes")) {
-                    System.out.println("_______________________________________________________________________");
-                    System.out.println("MAP OF GAME:");
-                    System.out.println("Main Lobby connects the Dining Room (west), the Ice Cave (south), and the Library (east).\nDining Room only has access to the Main Lobby (east). \nLibrary also only has access to the Main Lobby (west). \nThe Ice Cave connects the Main Lobby (north) and the Duel Stadium (south).\nThe Duel Stadium only can access to the Ice Cave (north).");
-                    System.out.println("_______________________________________________________________________");
+        System.out.println("Type in search to search rooms for any treasure");
+        
+            String choice = input.nextLine();
+                if (choice.equals("search")) 
+                {
+                    System.out.println("You also have a map in your inventory, do you want to use it? (yes or no): ");
+                    choice= input.nextLine();
+                    if(choice.equals("yes"))
+                    {
+                        System.out.println("_______________________________________________________________________");
+                        System.out.println("MAP OF GAME:");
+                        System.out.println("Main Lobby connects the Dining Room (west), the Ice Cave (south), and the Library (east).\nDining Room only has access to the Main Lobby (east). \nLibrary also only has access to the Main Lobby (west). \nThe Ice Cave connects the Main Lobby (north) and the Duel Stadium (south).\nThe Duel Stadium only can access to the Ice Cave (north).");
+                        System.out.println("_______________________________________________________________________");
+                    }
+                    else
+                    {
+                        System.out.println("Have fun guessing your way around!");
+                    }
                 }
+                
             
                 
         // System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are south, west, and east: ");
@@ -87,6 +99,7 @@ public class Game {
                 if(nextRoom != null) {
                     player1.changeRooms(nextRoom);
                     currentRoom= player1.getRoom();
+                    
                 }
                 else {
                     System.out.println("There is no room to go into so you will stay in the same room");
@@ -141,7 +154,14 @@ public class Game {
                 }
             }
             else {
-                System.out.println("There is not an enemy in this room");
+                if(!currentEnemy.isAlive())
+                {
+                    System.out.println("You have already defeated this enemy!");
+                }
+                else
+                {
+                    System.out.println("There is no enemy in this room");
+                }
             }
 
             if(player1.getHealth()<=0)
