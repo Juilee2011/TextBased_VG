@@ -1,11 +1,13 @@
 package TextBased_VG;
 
-public class Player {
+public class Player 
+{
+    //declare variables
     private int health;
     public Room currentRoom;
     private int numKeys = 0;
 
-    //creates a player object which 
+    //constructor 
     public Player(int health, Room currentRoom, int numKeys) {
         this.health = health;
         this.currentRoom = currentRoom;
