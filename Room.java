@@ -69,7 +69,7 @@ public class Room
     }
     public void enterRoom(Player p)
     {
-        if(isLocked == true && isSearched == false)
+        if(isLocked == false && isSearched == false)
         {
             if(p.getKeys()> 0)
             {
