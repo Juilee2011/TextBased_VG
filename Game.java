@@ -115,7 +115,11 @@ public class Game {
                 nextRoom = currentRoom.getNeighbor(direction);    
                 if(nextRoom == null) {
                     System.out.println("There is no room in that direction!");
+                    //System.out.println("Please input a valid direction");
+                    //direction= input.nextLine();
+                    continue;
                 }
+                else{
                 if(nextRoom.getIsLocked()) {
                     if (player1.getKeys()==0) {
                         System.out.println("You need a key to unlock this room!");
@@ -125,10 +129,12 @@ public class Game {
                         nextRoom.enterRoom(player1);
                     }
                 }
-
+            
                 else {
                     System.out.println("You have already unlocked this room.");
                 }
+            }
+            
 
                 player1.changeRooms(nextRoom);
                 currentRoom = player1.getRoom();
@@ -185,7 +191,7 @@ public class Game {
                     player1.attack(currentRoom.getEnemy());
 
                     int randomNum = (int)(Math.random()*2) + 0;
-                    int possibleDamage = (int)(Math.random() * 10) + 1;
+                    int possibleDamage = (int)(Math.random() * 51) + 1;
 
                     if(randomNum == 1) {
                         player1.takeDamage(possibleDamage);
@@ -193,7 +199,7 @@ public class Game {
                         System.out.println("You have recieved "+possibleDamage+" damage.");
                     }
                     else if (userChoice.equalsIgnoreCase("No")) {
-                    player1.takeDamage(10);
+                    player1.takeDamage(100);
                     System.out.println("You have choosen not to attack the enemy, so the enemy attacked you and you lost 10 health.");
                     
                     }

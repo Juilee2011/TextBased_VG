@@ -33,10 +33,8 @@ public class Player
 
     //when called, substracts from user's health
     public void takeDamage(int damage){
-     this.health -= damage;
-     if (this.health < 0) {
-        this.health = 0;
-     }   
+     this.health = this.health - damage;
+
     }
 
     //attacks enemy and takes away their health
@@ -58,7 +56,7 @@ public class Player
 
     //accessor method for checking player's health
     public int getHealth() {
-        return health;
+        return this.health;
     }
 
     //returns the room that the user is currently in
