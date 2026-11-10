@@ -31,6 +31,7 @@ public class Player
         }
     }
 
+    //when called, substracts from user's health
     public void takeDamage(int damage){
      this.health -= damage;
      if (this.health < 0) {
@@ -38,24 +39,29 @@ public class Player
      }   
     }
 
+    //attacks enemy and takes away their health
     public void attack(Enemy e) {
         //accessor method from the enemy class
       
         e.takeDamage(50);
     }
 
+    //switches the location the user is in
     public void changeRooms(Room r) {
         this.currentRoom = r;
     }
 
+    //accessor method returning the number of keys the user has
     public int getKeys() {
         return numKeys;
     }
 
+    //accessor method for checking player's health
     public int getHealth() {
         return health;
     }
 
+    //returns the room that the user is currently in
     public Room getRoom(){
          return this.currentRoom;
     }

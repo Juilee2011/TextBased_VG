@@ -13,7 +13,7 @@ public class Enemy
         this.description = description;
     }
     
-    
+    //takes away the user's health when the enemy attacks the user
     public void attack(Player p)
     {
         int damage = 10;

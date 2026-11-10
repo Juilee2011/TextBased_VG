@@ -26,6 +26,7 @@ public class Room
         this.isLocked = false;
         this.keys = 1;
     }
+    //changes the surrounding rooms' directions
     public void setNeighbors(Room s, Room e, Room w, Room n)
     {
         //mutator method
@@ -34,6 +35,7 @@ public class Room
         west = w;
         east = e;
     }
+    //sets the enemy of each room that has an enemy
     public void setEnemy(Enemy e)
     {
         this.enemy = e;
@@ -44,6 +46,7 @@ public class Room
             this.hasEnemy = false;
         }
     }
+    //checks whether the room has treasure
     public void search(Player p)
     {
         //put something in this
@@ -67,6 +70,8 @@ public class Room
         }
     
     }
+
+    //allows the user to enter a room so long as they have enough keys and/or the room is unlocked
     public void enterRoom(Player p)
     {
         if(isLocked == false && isSearched == false)
@@ -93,10 +98,13 @@ public class Room
             System.out.println("You have already searched this room. Please try another room");
         }
     }
+
+    //returns the description of the room
     public String getDescription()
     {
         return description;
     }
+    //finds which room the user wants to go to that is the neighbor of the room they are in currently
     public Room getNeighbor(String direction)
     {
         if(direction.equalsIgnoreCase("West"))
@@ -125,11 +133,13 @@ public class Room
         
     }
     
+    //returns the description of the enemy
     public Enemy getEnemy()
     {
         //accessor method
         return enemy;
     }
+    //checks if a room has an enemy
     public boolean hasEnemy()
     {
         return hasEnemy;
