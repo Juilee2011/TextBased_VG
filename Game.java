@@ -205,16 +205,19 @@ public class Game {
             {
                 System.out.println("GAME OVER! You ran out of health");
                 gameOver = true;
+                break;
             }
             else if(!goblin.isAlive())
             {
                 System.out.println("Congratulations! You finished the game and defeated the final boss!");
                 gameOver = true;
+                break;
             }
 
             if(userChoice.equals("quit") || direction.equals("quit"))
             {
                 gameOver=true;
+                break;
             }
 
             
