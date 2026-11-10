@@ -49,6 +49,7 @@ public class Game {
                 {
                     System.out.println("You found a key!");
                     player1.addKeys(1);
+                    System.out.println("You now have " + player1.getKeys() + " keys");
                     System.out.println("Congrats, you found a map! Would you like to pick it up? (yes or no): ");
                     choice= input.nextLine();
                     if(choice.equals("yes"))
