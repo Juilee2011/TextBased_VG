@@ -101,7 +101,6 @@ public class Game {
                 break;
                 //System.exit(0);
             }
-
             else if(direction.equalsIgnoreCase("search")) {
                 currentRoom.search(player1);
             }

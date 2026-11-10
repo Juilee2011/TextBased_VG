@@ -81,13 +81,13 @@ public class Room
             }
         }
 
-        else if (p.hasKey()) {
-            isLocked = false;
-            System.out.println("You have unlocked a new room");
-            System.out.println("You now have " + p.getKeys() + " keys.");
+        // else if (p.hasKey()) {
+        //     isLocked = false;
+        //     System.out.println("You have unlocked a new room");
+        //     System.out.println("You now have " + p.getKeys() + " keys.");
 
-        }
-        if(isSearched == false)
+        // }
+        else if(isSearched == false)
         {
             if(p.getKeys()> 0)
             {
