@@ -109,8 +109,8 @@ public class Game {
                 if(nextRoom == null) {
                     System.out.println("There is no room in that direction!");
                 }
-                if(nextRoom.isLocked()) {
-                    if (!player1.hasKeys()) {
+                if(nextRoom.getIsLocked() == true) {
+                    if (!player1.hasKey()) {
                         System.out.println("You need a key to unlock this room!");
                     }
 

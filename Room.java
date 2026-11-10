@@ -157,5 +157,10 @@ public class Room
     {
         return hasEnemy;
     }
+    //returns if the room is locked
+    public boolean getIsLocked()
+    {
+        return isLocked;
+    }
     
 }
