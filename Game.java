@@ -174,6 +174,7 @@ public class Game {
                             userChoice= input.nextLine();
                         }
                     }
+                    System.out.println("Congrats! You defeated the enemy!");
                     
                 
                 }
