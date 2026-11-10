@@ -195,6 +195,7 @@ public class Game {
                     if(userChoice.equalsIgnoreCase("search"))
                     {
                         currentRoom.search(player1);
+                        
                     }
                     
                 

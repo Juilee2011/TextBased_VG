@@ -81,7 +81,7 @@ public class Room
                 System.out.println("You have unlocked another room");
                 isLocked = false;
                 keys--;
-                isSearched = true;
+                
                 System.out.println("You now have "+keys+" keys");
             
             }
