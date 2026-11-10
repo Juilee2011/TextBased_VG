@@ -154,8 +154,6 @@ public class Game {
                     if(randomNum == 1) {
                         player1.takeDamage(possibleDamage);
                     }
-                        
-                        System.out.println("You have successfully attacked the enemy!");
                         System.out.println("You have recieved "+possibleDamage+" damage.");
                     }
                     else if (userChoice.equalsIgnoreCase("No")) {

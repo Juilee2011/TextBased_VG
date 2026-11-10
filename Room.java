@@ -23,7 +23,7 @@ public class Room
         this.hasTreasure = hasTreasure;
         this.hasEnemy = hasEnemy;
         this.isSearched = false;
-        this.isLocked = false;
+        this.isLocked = true;
         this.keys = 1;
     }
     //changes the surrounding rooms' directions
@@ -74,7 +74,7 @@ public class Room
     //allows the user to enter a room so long as they have enough keys and/or the room is unlocked
     public void enterRoom(Player p)
     {
-        if(isLocked == false && isSearched == false)
+        if(isSearched == false)
         {
             if(p.getKeys()> 0)
             {
