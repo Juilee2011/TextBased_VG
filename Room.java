@@ -74,6 +74,19 @@ public class Room
     //allows the user to enter a room so long as they have enough keys and/or the room is unlocked
     public void enterRoom(Player p)
     {
+        if (isLocked == false) {
+            System.out.println("You have already unlocked this room.");
+            if(isSearched == true) {
+                System.out.println("You have already searched this room.");
+            }
+        }
+
+        else if (p.hasKey()) {
+            isLocked = false;
+            System.out.println("You have unlocked a new room");
+            System.out.println("You now have " + p.getKeys() + " keys.");
+
+        }
         if(isSearched == false)
         {
             if(p.getKeys()> 0)

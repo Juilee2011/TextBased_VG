@@ -22,6 +22,7 @@ public class Game {
         Enemy currentEnemy;
         String choice= "";
         
+        
 
     public void setUpGame(){
         //directions: south, east, west, north
@@ -87,6 +88,8 @@ public class Game {
                 
                 currentRoom = player1.getRoom();
                 System.out.println("Current Location: " + currentRoom.getDescription());
+                System.out.println("Health: " + player1.getHealth());
+                System.out.println("Keys: " + player1.getHealth());
                 System.out.println("Choose your next room (north, south, east, west), type quit to quit, or search to search the room");
                  direction= input.nextLine();
             
@@ -103,36 +106,56 @@ public class Game {
             {
                 nextRoom = currentRoom.getNeighbor(direction);
                 
-
-                if(nextRoom != null) {
-                    if(player1.hasKey())
-                    {
-                        player1.changeRooms(nextRoom);
-                        
-                        currentRoom= player1.getRoom();
-                        currentRoom.enterRoom(player1);
-
-                        
-                    }
-                    else
-                    {
-                        System.out.println("Please search for a key to unlock this room!");
-                    }
-                    
+                if(nextRoom == null) {
+                    System.out.println("There is no room in that direction!");
                 }
+                if(nextRoom.isLocked()) {
+                    if (!player1.hasKeys()) {
+                        System.out.println("You need a key to unlock this room!");
+                    }
+
+                    nextRoom.enterRoom(player1);
+                }
+
                 else {
-                    System.out.println("There is no room to go into so you will stay in the same room");
-                    continue;
+                    System.out.println("You have already unlocked this room.");
                 }
-            }
+
+                player1.changeRooms(nextRoom);
+
+                System.out.println("You enterde: " + nextRoom.getDescription());
+
+
+
+            //         {
+            //             player1.changeRooms(nextRoom);
+                        
+            //             currentRoom= player1.getRoom();
+            //             currentRoom.enterRoom(player1);
+            //             if (currentRoom.isSearch(p)) {
+
+            //             }
+                        
+            //         }
+            //         else
+            //         {
+            //             System.out.println("Please search for a key to unlock this room!");
+            //         }
+                    
+            //     }
+            //     else {
+            //         System.out.println("There is no room to go into so you will stay in the same room");
+            //         continue;
+            //     }
+            // }
             // else if(direction.equalsIgnoreCase("search"))
             // {
             //     currentRoom.search(player1);
             // }
-            else
-            {
-                System.out.println("Your input was invalid. Please type in a direction, or quit, only please");
-            }
+            // else
+            // {
+            //     System.out.println("Your input was invalid. Please type in a direction, or quit, only please");
+            // }
     
             if (currentRoom.hasEnemy()==true) 
             {
@@ -225,5 +248,7 @@ public class Game {
         }
         System.out.println("Thank you for playing!");
     }
-
 }
+}
+
+
