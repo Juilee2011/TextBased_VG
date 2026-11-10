@@ -89,7 +89,7 @@ public class Game {
                 currentRoom = player1.getRoom();
                 System.out.println("Current Location: " + currentRoom.getDescription());
                 System.out.println("Health: " + player1.getHealth());
-                System.out.println("Keys: " + player1.getHealth());
+                System.out.println("Keys: " + player1.getKeys());
                 
                 System.out.println("Choose your next room (north, south, east, west), type quit to quit, or search to search the room");
                 direction= input.nextLine();
@@ -102,25 +102,29 @@ public class Game {
                 //System.exit(0);
             }
 
-            if(direction.equalsIgnoreCase("search")) {
+            else if(direction.equalsIgnoreCase("search")) {
                 currentRoom.search(player1);
             }
             
                 //direction = input.nextLine();
-            if(!direction.equalsIgnoreCase("west") && !direction.equalsIgnoreCase("east") && !direction.equalsIgnoreCase("north") && !direction.equalsIgnoreCase("south"))
+            else if(!direction.equalsIgnoreCase("west") && !direction.equalsIgnoreCase("east") && !direction.equalsIgnoreCase("north") && !direction.equalsIgnoreCase("south"))
             {
                 System.out.println("Invalid input!");
             }
-            nextRoom = currentRoom.getNeighbor(direction);    
+            else
+            {
+                nextRoom = currentRoom.getNeighbor(direction);    
                 if(nextRoom == null) {
                     System.out.println("There is no room in that direction!");
                 }
                 if(nextRoom.getIsLocked()) {
-                    if (player1.getKeys()!=0) {
+                    if (player1.getKeys()==0) {
                         System.out.println("You need a key to unlock this room!");
                     }
-
-                    nextRoom.enterRoom(player1);
+                    else
+                    {
+                        nextRoom.enterRoom(player1);
+                    }
                 }
 
                 else {
@@ -135,7 +139,7 @@ public class Game {
                 if (currentRoom.getIsSearched()) {
                     System.out.println("You have already searched this room.");
                 }
-
+            }
             //         {
             //             player1.changeRooms(nextRoom);
                         
