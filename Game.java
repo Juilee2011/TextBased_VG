@@ -5,8 +5,8 @@ public class Game {
 
         Room mainLobby = new Room("This is the main lobby.", true, false);
         Room duelRoom = new Room("This is the final boss room.", true, true);
-        Room diningHall = new Room("This is the Dinning hall.", true, false);
-        Room library = new Room("This is the dining hall.", true, true);
+        Room diningHall = new Room("This is the dining hall.", true, false);
+        Room library = new Room("This is the library.", true, true);
         Room iceCave = new Room("This is the Ice Cave", true, true);
         
         Player player1 = new Player(100, mainLobby, 0);
