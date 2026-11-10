@@ -91,11 +91,11 @@ public class Room
         {
             if(p.getKeys()> 0)
             {
-                System.out.println("You have unlocked another room");
+                System.out.println("You used a key to unlock a new room, so ");
                 isLocked = false;
                 keys--;
                 
-                System.out.println("You now have "+keys+" keys");
+                System.out.print("you now have " + keys + " keys");
             
             }
             else
@@ -106,10 +106,10 @@ public class Room
             }
         }
         //maybe this is the search method?
-        else
-        {
-            System.out.println("You have already searched this room. Please try another room");
-        }
+        // else
+        // {
+        //     System.out.println("You have already searched this room. Please try another room");
+        // }
     }
 
     //returns the description of the room
