@@ -162,5 +162,9 @@ public class Room
     {
         return isLocked;
     }
+
+    public boolean getIsSearched() {
+        return isSearched;
+    }
     
 }
