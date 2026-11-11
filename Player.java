@@ -16,7 +16,12 @@ public class Player
 
     //method that changes the number of keys that the user has
     public void addKeys(int keys) {
-        numKeys++;
+        numKeys= numKeys+keys;
+    }
+
+    public void minusKeys(int keys)
+    {
+        numKeys=numKeys-keys;
     }
     
     //a method to check to see if the user has any keys

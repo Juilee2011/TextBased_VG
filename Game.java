@@ -139,7 +139,7 @@ public class Game {
                 player1.changeRooms(nextRoom);
                 currentRoom = player1.getRoom();
 
-                System.out.println("You entered: " + nextRoom.getDescription());
+                System.out.println("\nRoom Location: " + nextRoom.getDescription());
 
                 if (currentRoom.getIsSearched()) {
                     System.out.println("You have already searched this room.");
@@ -200,7 +200,7 @@ public class Game {
                     }
                     else if (userChoice.equalsIgnoreCase("No")) {
                     player1.takeDamage(100);
-                    System.out.println("You have choosen not to attack the enemy, so the enemy attacked you and you lost 10 health.");
+                    System.out.println("You have chosen not to attack the enemy, so the enemy attacked you and you lost 100 health (AKA all your health).");
                     
                     }
                     else if(userChoice.equalsIgnoreCase("quit"))

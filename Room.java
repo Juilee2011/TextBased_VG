@@ -4,7 +4,7 @@ package TextBased_VG;
 public class Room 
 {
     private String description;
-    private int keys;
+    //private int keys;
     private boolean isSearched;
     private boolean hasTreasure;
     private boolean isLocked;
@@ -24,7 +24,7 @@ public class Room
         this.hasEnemy = hasEnemy;
         this.isSearched = false;
         this.isLocked = true;
-        this.keys = 1;
+        //this.keys = 1;
     }
     //changes the surrounding rooms' directions
     public void setNeighbors(Room s, Room e, Room w, Room n)
@@ -93,9 +93,9 @@ public class Room
             {
                 System.out.println("You used a key to unlock a new room, so ");
                 isLocked = false;
-                keys--;
+                p.minusKeys(1);
                 
-                System.out.print("you now have " + keys + " keys");
+                System.out.println("you now have " + p.getKeys() + " keys");
             
             }
             else
