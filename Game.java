@@ -3,11 +3,11 @@ import java.util.Scanner;
 
 public class Game {
 
-        Room mainLobby = new Room("This is the main lobby.", true, false);
-        Room duelRoom = new Room("This is the final boss room.", true, true);
-        Room diningHall = new Room("This is the dining hall.", true, false);
-        Room library = new Room("This is the library.", true, true);
-        Room iceCave = new Room("This is the Ice Cave", true, true);
+        Room mainLobby = new Room("This is the main lobby.", true, false, false);
+        Room duelRoom = new Room("This is the final boss room.", true, true,true);
+        Room diningHall = new Room("This is the dining hall.", true, false,true);
+        Room library = new Room("This is the library.", true, true,true);
+        Room iceCave = new Room("This is the Ice Cave", true, true,true);
         
         Player player1 = new Player(100, mainLobby, 0);
         Enemy iceYeti = new Enemy(50, "is an Ice Yeti");
@@ -105,16 +105,9 @@ public class Game {
                 //System.exit(0);
             }
             else if(direction.equalsIgnoreCase("search") ) {
-                // currentRoom= player1.getRoom();
-                     
-                // if(currentRoom==null)
-                // {
-                //     System.out.println("Sorry, but since this room doesn't exist, that means that you can't search it for treasure!");
-                // }
-                // else
-                // {
+                
                      currentRoom.search(player1); 
-                // }
+                
             }
             
             else if(direction.equalsIgnoreCase("west") || direction.equalsIgnoreCase("east") || direction.equalsIgnoreCase("north") || direction.equalsIgnoreCase("south"))
@@ -143,14 +136,16 @@ public class Game {
                 }
             }
             
+                if(!currentRoom.getIsLocked())
+                {
+                    player1.changeRooms(nextRoom);
+                    currentRoom = player1.getRoom();
 
-                player1.changeRooms(nextRoom);
-                currentRoom = player1.getRoom();
+                    System.out.println("\nRoom Location: " + nextRoom.getDescription());
 
-                System.out.println("\nRoom Location: " + nextRoom.getDescription());
-
-                if (currentRoom.getIsSearched()) {
-                    System.out.println("You have already searched this room.");
+                    if (currentRoom.getIsSearched()) {
+                        System.out.println("You have already searched this room.");
+                    }
                 }
             }
             else
@@ -237,7 +232,7 @@ public class Game {
                     }
                 }
             }
-            else {
+            else if(!currentRoom.getIsLocked()){
                 
                     System.out.println("There is no enemy in this room");
                     System.out.println("Would you like to search this room for treasure? Type search if yes, otherwise type anything to skip");

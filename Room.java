@@ -17,13 +17,13 @@ public class Room
     private Enemy enemy;
 
     //methods and constructors
-    public Room (String description, boolean hasTreasure, boolean hasEnemy)
+    public Room (String description, boolean hasTreasure, boolean hasEnemy, boolean isLocked)
     {
         this.description = description;
         this.hasTreasure = hasTreasure;
         this.hasEnemy = hasEnemy;
         this.isSearched = false;
-        this.isLocked = true;
+        this.isLocked = isLocked;
         //this.keys = 1;
     }
     //changes the surrounding rooms' directions
@@ -83,13 +83,7 @@ public class Room
             }
         }
 
-        // else if (p.hasKey()) {
-        //     isLocked = false;
-        //     System.out.println("You have unlocked a new room");
-        //     System.out.println("You now have " + p.getKeys() + " keys.");
-
-        // }
-        else if(isSearched == false)
+        if(isSearched == false)
         {
             if(p.getKeys()> 0)
             {
@@ -107,11 +101,7 @@ public class Room
                 isSearched = false;
             }
         }
-        //maybe this is the search method?
-        // else
-        // {
-        //     System.out.println("You have already searched this room. Please try another room");
-        // }
+      
     }
 
     //returns the description of the room
