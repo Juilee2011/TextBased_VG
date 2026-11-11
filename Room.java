@@ -168,5 +168,9 @@ public class Room
     public boolean getIsSearched() {
         return isSearched;
     }
+    public void setIsLocked()
+    {
+        isLocked = false;
+    }
     
 }

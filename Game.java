@@ -38,7 +38,7 @@ public class Game {
         duelRoom.setEnemy(goblin);
         library.setEnemy(fireMonster);
 
-        
+        mainLobby.setIsLocked();
         //currentRoom= mainLobby;
         //player1.getHealth();
         System.out.println("Welcome to Vituoso!");
