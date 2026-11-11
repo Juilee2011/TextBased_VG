@@ -40,7 +40,7 @@ public class Game {
 
         
         //currentRoom= mainLobby;
-
+        //player1.getHealth();
         System.out.println("Welcome to Vituoso!");
         System.out.println("The objective of this game is to get keys in order to unlock new doors, battle monsters, and, finally, beat the boss-level monster.");
         System.out.println("Type in search to search rooms for any treasure (if you don't want to try this out, just type anything else to skip)");
@@ -79,6 +79,7 @@ public class Game {
     }
     public void gameLoop() {
         boolean gameOver = false;
+
         while (!gameOver)
         {
 
@@ -145,35 +146,7 @@ public class Game {
                     System.out.println("You have already searched this room.");
                 }
             }
-            //         {
-            //             player1.changeRooms(nextRoom);
-                        
-            //             currentRoom= player1.getRoom();
-            //             currentRoom.enterRoom(player1);
-            //             if (currentRoom.isSearch(p)) {
-
-            //             }
-                        
-            //         }
-            //         else
-            //         {
-            //             System.out.println("Please search for a key to unlock this room!");
-            //         }
-                    
-            //     }
-            //     else {
-            //         System.out.println("There is no room to go into so you will stay in the same room");
-            //         continue;
-            //     }
-            // }
-            // else if(direction.equalsIgnoreCase("search"))
-            // {
-            //     currentRoom.search(player1);
-            // }
-            // else
-            // {
-            //     System.out.println("Your input was invalid. Please type in a direction, or quit, only please");
-            // }
+           
     
             if (currentRoom.hasEnemy()==true) 
             {
@@ -187,20 +160,24 @@ public class Game {
                     while(currentEnemy.isAlive())
                     {
                     userChoice= input.nextLine();
-                    if(userChoice.equalsIgnoreCase("Yes")) {
-                    player1.attack(currentRoom.getEnemy());
+                    if(userChoice.equalsIgnoreCase("Yes")) 
+                    {
+                        player1.attack(currentRoom.getEnemy());
 
-                    int randomNum = (int)(Math.random()*2) + 0;
-                    int possibleDamage = (int)(Math.random() * 51) + 1;
+                        //int randomNum = (int)(Math.random()*2) + 0;
+                        int possibleDamage = (int)(Math.random() * 41) + 1;
 
-                    if(randomNum == 1) {
+                    
                         player1.takeDamage(possibleDamage);
-                    }
+                    
                         System.out.println("You have recieved "+possibleDamage+" damage.");
+                        
                     }
                     else if (userChoice.equalsIgnoreCase("No")) {
                     player1.takeDamage(100);
                     System.out.println("You have chosen not to attack the enemy, so the enemy attacked you and you lost 100 health (AKA all your health).");
+                    System.out.println("Unfortunately, you lost the game.");
+                    break;
                     
                     }
                     else if(userChoice.equalsIgnoreCase("quit"))
@@ -220,7 +197,7 @@ public class Game {
                 }
                 else
                 {
-                    System.out.println("The enemy in this room has already been defeated.");
+                    System.out.println("The enemy in this room has been defeated.");
                     System.out.println("Would you like to search this room for treasure? If yes, type search, and if no, type anything else to skip");
                     userChoice= input.nextLine();
                     if(userChoice.equalsIgnoreCase("search"))
