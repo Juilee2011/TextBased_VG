@@ -59,9 +59,11 @@ public class Room
             isSearched = true;
             if(hasTreasure==true)
             {
+                System.out.println("[^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^]");
                 System.out.println("You found a key!");
                 p.addKeys(1);
-                System.out.println("You now have " + p.getKeys() + " keys.");
+                System.out.println("You now have " + p.getKeys() + " key(s).");
+                System.out.println("[^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^]");
             }
             else
             {
@@ -140,7 +142,7 @@ public class Room
 
         else 
         {
-            System.out.println("Your input is invalid. Please type in \"West\",\"East\",\"North\",\"South\",or \"Duel\" only please");
+            System.out.println("Your input is invalid. Please type in \"West\",\"East\",\"North\", or \"South\" only please if you are trying to enter a room!");
             return null;
         }
         
