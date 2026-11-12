@@ -42,7 +42,7 @@ public class Game {
         mainLobby.setIsLocked();
    
 
-        System.out.println("Welcome to Vituoso!");
+        System.out.println("Welcome to Virtuoso!");
         System.out.println("The objective of this game is to get keys in order to unlock new doors, battle monsters, and, finally, beat the boss-level monster.");
         System.out.println("Type in \"search\" to search rooms for any treasure (if you don't want to try this out, just type anything else to skip)");
         
@@ -69,16 +69,13 @@ public class Game {
  
         
     }
+    //has the rest of the program while the game is still going
     public void gameLoop() {
         gameOver = false;
 
         while (!gameOver)
         {
-
-            //if(direction.equalsIgnoreCase("west")||direction.equalsIgnoreCase("east")|| direction.equalsIgnoreCase("south")||direction.equalsIgnoreCase("north"))
-            //{
-                //IDK WHAT'S HAPPENING HERE, I JS MOVED RANDOM STUFF AHOEHOIFEJFEOEJO
-                
+            //outputs the current room, health, and keys
                 currentRoom = player1.getRoom();
                 System.out.println("****************************************************************");
                 System.out.println("Current Location: " + currentRoom.getDescription());
@@ -167,7 +164,6 @@ public class Game {
                     System.out.println("There is an enemy in this room, be ready to fight!");
                     System.out.println("What you are facing "+currentEnemy.getDescription());
                     
-                    //userChoice = input.nextLine();
                     while(currentEnemy.isAlive())
                     {
                         System.out.println("Do you want to attack? (yes or no): ");
@@ -198,6 +194,7 @@ public class Game {
                     }
                     else if(userChoice.equalsIgnoreCase("quit"))
                     {
+                        //this 'break' brings the rest of the program to the beginning to where the original 'quit' code was
                         break;
                     }
                     
@@ -235,7 +232,6 @@ public class Game {
             }
             else if(!currentRoom.getIsLocked()){
                 
-                    //System.out.println("Current Location: "+currentRoom.getDescription());
                     System.out.println("There is no enemy in the room that you are currently in");
                     System.out.println("Would you like to search the room you are currently in for treasure? Type \"search\" if yes, otherwise type anything else to skip");
                     userChoice= input.nextLine();
@@ -271,6 +267,7 @@ public class Game {
         
         
     }
+    //this prints at the very end after the player quits, or even when the entire game is completed
     System.out.println("Thank you for playing!");
 }
 }

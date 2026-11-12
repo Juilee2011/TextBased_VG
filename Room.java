@@ -154,10 +154,11 @@ public class Room
     {
         return isLocked;
     }
-
+    //returns if the room has been searched
     public boolean getIsSearched() {
         return isSearched;
     }
+    //sets the isLocked method to false, especially for the mainLobby since it should already be unlocked
     public void setIsLocked()
     {
         isLocked = false;

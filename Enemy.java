@@ -28,8 +28,7 @@ public class Enemy
             this.health = 0;
         }
     }
-    //this is the method that happens while the player fights
-    
+        
     //method to check how many health the player has (in other words, to check if they are alive)
     public boolean isAlive()
     {

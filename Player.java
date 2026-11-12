@@ -19,6 +19,7 @@ public class Player
         numKeys= numKeys+keys;
     }
 
+    //removes the number of keys used (it was adding the wrong amount before, and there are two 'key' variables, each in a different class)
     public void minusKeys(int keys)
     {
         numKeys=numKeys-keys;
