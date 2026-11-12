@@ -21,6 +21,7 @@ public class Game {
         String userChoice = "";
         Enemy currentEnemy;
         String choice= "";
+        boolean gameOver;
         
         
 
@@ -39,11 +40,11 @@ public class Game {
         library.setEnemy(fireMonster);
 
         mainLobby.setIsLocked();
-        //currentRoom= mainLobby;
-        //player1.getHealth();
+   
+
         System.out.println("Welcome to Vituoso!");
         System.out.println("The objective of this game is to get keys in order to unlock new doors, battle monsters, and, finally, beat the boss-level monster.");
-        System.out.println("Type in search to search rooms for any treasure (if you don't want to try this out, just type anything else to skip)");
+        System.out.println("Type in \"search\" to search rooms for any treasure (if you don't want to try this out, just type anything else to skip)");
         
             String choice = input.nextLine();
                 if (choice.equals("search")) 
@@ -65,20 +66,11 @@ public class Game {
                         System.out.println("Have fun guessing your way around!");
                     }
                 }
-                
-            
-                
-        // System.out.println("Your starting position is in the main lobby. Your three directions that you can choose from are south, west, and east: ");
-        
-        //direction = input.nextLine();
-        //Room nextRoom = player1.getRoom().getNeighbor(direction);
-
-        
-        
+ 
         
     }
     public void gameLoop() {
-        boolean gameOver = false;
+        gameOver = false;
 
         while (!gameOver)
         {
@@ -94,7 +86,7 @@ public class Game {
                 System.out.println("Keys: " + player1.getKeys());
                 System.out.println("****************************************************************");
                 
-                System.out.println("Choose your next room (north, south, east, west), type quit to quit, or search to search the room");
+                System.out.println("Choose your next room (north, south, east, west), type \"quit\" to quit, or \"search\" to search the room");
                 direction= input.nextLine();
             
             if(direction.equalsIgnoreCase("quit"))
@@ -115,14 +107,14 @@ public class Game {
                 nextRoom = currentRoom.getNeighbor(direction);    
                 if(nextRoom == null) {
                     System.out.println("There is no room in that direction!");
-                    //System.out.println("Please input a valid direction");
-                    //direction= input.nextLine();
                     continue;
                 }
                 else{
                 if(nextRoom.getIsLocked()) {
                     if (player1.getKeys()==0) {
-                        System.out.println("You need a key to unlock this room!");
+                        System.out.println("===================================================");
+                        System.out.println("You need a key to unlock that room!");
+                        System.out.println("===================================================");
                     }
                     else
                     {
@@ -136,7 +128,7 @@ public class Game {
                 }
             }
             
-                if(!currentRoom.getIsLocked())
+                if(currentRoom.getNeighbor(direction).getIsLocked()==false)
                 {
                     player1.changeRooms(nextRoom);
                     currentRoom = player1.getRoom();
@@ -150,8 +142,10 @@ public class Game {
             }
             else
             {
-                System.out.println("Invalid input! Please only type a direction, search, or quit as your input.");
-                System.out.println("NOTE: if you are not choosing to quit, type whatever and the program will prompt you again (second time actually put a direction or search");
+                System.out.println("`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`");
+                System.out.println("Invalid input! Please only type a direction, \"search\", or \"quit\" as your input.");
+                System.out.println("NOTE: if you are not choosing to quit, type whatever and the program will prompt you again (second time actually put a direction or \"search\"");
+                System.out.println("`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`");
                 direction= input.nextLine();
                 if(direction.equalsIgnoreCase("quit"))
                 {
@@ -187,15 +181,17 @@ public class Game {
 
                     
                             player1.takeDamage(possibleDamage);
-                    
+                            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
                             System.out.println("You have recieved "+possibleDamage+" damage.");
                             System.out.println("NOTE: Your current health is "+player1.getHealth());
+                            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
                         
                         }
                         else if (userChoice.equalsIgnoreCase("No")) {
                         player1.takeDamage(100);
+                        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                         System.out.println("You have chosen not to attack the enemy, so the enemy attacked you and you lost 100 health (AKA all your health).");
-                        System.out.println("Unfortunately, you lost the game.");
+                        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                         System.out.println("****************************************************************");
                         break;
                     
@@ -207,12 +203,16 @@ public class Game {
                     
                     else
                     {
+                        System.out.println("`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`");
                         System.out.println("Sorry, but your input was invalid. Please type in yes or no.");
+                        System.out.println("Hint: type in whatever you want for this line, and when it prompts you the second time, then enter yes/no (or \"quit\")");
+                        System.out.println("`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`");
                         userChoice= input.nextLine();
                     }
                     }
                     if(player1.getHealth()>0)
                     {
+                        System.out.println();
                         System.out.println("Congrats! You defeated the enemy!");
                     }
                     System.out.println("****************************************************************");
@@ -221,9 +221,10 @@ public class Game {
                 }
                 else if(!currentEnemy.isAlive() && !direction.equals("search"))
                 {
-                    System.out.println("The enemy in this room has been defeated.");
+                    //System.out.println("Current Location: "+currentRoom.getDescription());
+                    System.out.println("The enemy in the room you are currently in has been defeated.");
                     System.out.println();
-                    System.out.println("Would you like to search this room for treasure? If yes, type search, and if no, type anything else to skip");
+                    System.out.println("Would you like to search the room that you are currently in for treasure? If yes, type \"search\", and if no, type anything else to skip");
                     System.out.println();
                     userChoice= input.nextLine();
                     if(userChoice.equalsIgnoreCase("search"))
@@ -234,8 +235,9 @@ public class Game {
             }
             else if(!currentRoom.getIsLocked()){
                 
-                    System.out.println("There is no enemy in this room");
-                    System.out.println("Would you like to search this room for treasure? Type search if yes, otherwise type anything to skip");
+                    //System.out.println("Current Location: "+currentRoom.getDescription());
+                    System.out.println("There is no enemy in the room that you are currently in");
+                    System.out.println("Would you like to search the room you are currently in for treasure? Type \"search\" if yes, otherwise type anything else to skip");
                     userChoice= input.nextLine();
                     if(userChoice.equalsIgnoreCase("search"))
                     {

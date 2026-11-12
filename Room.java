@@ -96,7 +96,7 @@ public class Room
             }
             else
             {
-                System.out.println("Sorry, you don't have enough keys to enter");
+                System.out.println("Sorry, you don't have enough keys to enter that room");
                 isLocked = true;
                 isSearched = false;
             }
